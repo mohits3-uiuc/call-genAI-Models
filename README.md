@@ -51,15 +51,43 @@ curl -X POST https://api-url/invoke \
   -d '{"prompt": "Explain quantum computing"}'
 ```
 
+## Streamlit Web Application
+
+A user-friendly web interface to interact with the Bedrock API via API Gateway.
+
+**Quick Start:**
+```bash
+# Install dependencies and run the app
+./run_app.sh
+
+# Or run manually
+pip install -r requirements.txt
+streamlit run streamlit_app.py
+```
+
+**Features:**
+- Interactive chat interface
+- Configurable temperature and max tokens
+- Real-time API calls to your API Gateway
+- Chat history tracking
+- Error handling and status display
+
+**Access:** Open http://localhost:8501 in your browser
+
 ## Files
 
 - `bedrock-lambda.py` - Main Lambda function (clean, readable code)
 - `bedrock-converse.py` - Alternative using converse API
 - `bedrock-invoke-model.py` - Alternative using invoke_model API
+- `streamlit_app.py` - Streamlit web application
+- `requirements.txt` - Python dependencies
+- `run_app.sh` - Quick start script
 - `README-APIs.md` - Detailed API comparison guide
 
 ## Troubleshooting
 
 - **Access denied**: Check IAM permissions and Bedrock region availability
 - **Model not found**: Verify MODEL_ID and model access
+- **API Gateway timeout**: Check Lambda function timeout settings
+- **CORS errors**: Ensure proper CORS headers in Lambda response
 - **Logs**: `aws logs tail /aws/lambda/function-name --follow`
